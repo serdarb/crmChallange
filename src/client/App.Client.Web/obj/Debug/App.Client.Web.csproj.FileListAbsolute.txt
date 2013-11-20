@@ -14,6 +14,9 @@ D:\Projects\Personal\crmChallange\src\client\App.Client.Web\bin\System.Web.Razor
 D:\Projects\Personal\crmChallange\src\client\App.Client.Web\bin\System.Web.WebPages.xml
 D:\Projects\Personal\crmChallange\src\client\App.Client.Web\bin\System.Web.WebPages.Deployment.xml
 D:\Projects\Personal\crmChallange\src\client\App.Client.Web\bin\System.Web.WebPages.Razor.xml
-D:\Projects\Personal\crmChallange\src\client\App.Client.Web\obj\Debug\App.Client.Web.csprojResolveAssemblyReference.cache
 D:\Projects\Personal\crmChallange\src\client\App.Client.Web\obj\Debug\App.Client.Web.dll
 D:\Projects\Personal\crmChallange\src\client\App.Client.Web\obj\Debug\App.Client.Web.pdb
+D:\Projects\Personal\crmChallange\src\client\App.Client.Web\bin\Castle.Core.dll
+D:\Projects\Personal\crmChallange\src\client\App.Client.Web\bin\Castle.Windsor.dll
+D:\Projects\Personal\crmChallange\src\client\App.Client.Web\bin\Castle.Core.xml
+D:\Projects\Personal\crmChallange\src\client\App.Client.Web\bin\Castle.Windsor.xml
