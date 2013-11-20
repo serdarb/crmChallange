@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{EFA13EA5-5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Client.Web", "src\client\App.Client.Web\App.Client.Web.csproj", "{625B549C-4343-4592-BB9C-D1E657172909}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Client.Web.Test", "src\test\App.Client.Web.Test\App.Client.Web.Test.csproj", "{095CAEBD-8402-4CD0-A7EF-860CCA517FAB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,11 +27,16 @@ Global
 		{625B549C-4343-4592-BB9C-D1E657172909}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{625B549C-4343-4592-BB9C-D1E657172909}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{625B549C-4343-4592-BB9C-D1E657172909}.Release|Any CPU.Build.0 = Release|Any CPU
+		{095CAEBD-8402-4CD0-A7EF-860CCA517FAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{095CAEBD-8402-4CD0-A7EF-860CCA517FAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{095CAEBD-8402-4CD0-A7EF-860CCA517FAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{095CAEBD-8402-4CD0-A7EF-860CCA517FAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{625B549C-4343-4592-BB9C-D1E657172909} = {87422C00-5E97-4A29-94DA-1EA4322D7027}
+		{095CAEBD-8402-4CD0-A7EF-860CCA517FAB} = {EFA13EA5-503E-468D-B0DF-498845E275F7}
 	EndGlobalSection
 EndGlobal
