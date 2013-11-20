@@ -3,8 +3,33 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{87422C00-5E97-4A29-94DA-1EA4322D7027}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{F552983E-6E66-4BA6-8C98-AEE39FC0F7F7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{191F0275-2BE2-4B26-BC4B-D456CC3ED5BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Util", "Util", "{364A9CC7-5335-45EB-A728-80783B76FEBB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{EFA13EA5-503E-468D-B0DF-498845E275F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Client.Web", "src\client\App.Client.Web\App.Client.Web.csproj", "{625B549C-4343-4592-BB9C-D1E657172909}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{625B549C-4343-4592-BB9C-D1E657172909}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{625B549C-4343-4592-BB9C-D1E657172909}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{625B549C-4343-4592-BB9C-D1E657172909}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{625B549C-4343-4592-BB9C-D1E657172909}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{625B549C-4343-4592-BB9C-D1E657172909} = {87422C00-5E97-4A29-94DA-1EA4322D7027}
 	EndGlobalSection
 EndGlobal
