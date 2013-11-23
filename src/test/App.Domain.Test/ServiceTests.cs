@@ -12,8 +12,9 @@ namespace App.Domain.Test
     {
         private UserService _userService;
         private CompanyService _companyService;
+        private CustomerService _customerService;
 
-        [SetUp]
+        [TestFixtureSetUp]
         public void setup_tests()
         {
             AutoMapperConfiguration.CreateMaps();
@@ -24,8 +25,12 @@ namespace App.Domain.Test
             var companyRepository = new EntityRepository<Company>("TestDB");
             companyRepository.DeleteAll();
 
+            var customerRepository = new EntityRepository<Customer>("TestDB");
+            customerRepository.DeleteAll();
+
             _userService = new UserService(userRepository);
             _companyService = new CompanyService(companyRepository, userRepository);
+            _customerService = new CustomerService(customerRepository, companyRepository, userRepository);
         }
 
         [Test]
@@ -105,13 +110,15 @@ namespace App.Domain.Test
             var id = _userService.CreateUser(user);
             Assert.IsNotNull(id);
 
-            var company = new CompanyDto();
-            company.Name = "Company Name 2";
-            company.Url = "company2.com";
-            company.AdminEmail = user.Email;
-            company.AdminId = id;
-            company.Language = user.Language;
-            company.CustomFields = new List<CustomFieldDto>();
+            var company = new CompanyDto
+            {
+                Name = "Company Name 2",
+                Url = "company2.com",
+                AdminEmail = user.Email,
+                AdminId = id,
+                Language = user.Language,
+                CustomFields = new List<CustomFieldDto>()
+            };
 
             var companyId = _companyService.CreateCompany(company);
             Assert.IsNotNull(companyId);
@@ -145,6 +152,85 @@ namespace App.Domain.Test
         [Test]
         public void should_create_customer()
         {
+            var user = new UserDto
+            {
+                Email = "valid5@email5.com",
+                FirstName = "Valid 5",
+                LastName = "Name 5",
+                Password = "password5",
+                Language = "en"
+            };
+
+            var id = _userService.CreateUser(user);
+            Assert.IsNotNull(id);
+
+            var company = new CompanyDto
+            {
+                Name = "Company Name 3",
+                Url = "company3.com",
+                AdminEmail = user.Email,
+                AdminId = id,
+                Language = user.Language,
+                CustomFields = new List<CustomFieldDto>()
+            };
+
+            var companyId = _companyService.CreateCompany(company);
+            Assert.IsNotNull(companyId);
+
+            var customFields = new List<CustomFieldDto>
+            {
+                new CustomFieldDto
+                {
+                    Name = "Birthday",
+                    DisplayNameEn = "Birthday",
+                    DisplayNameTr = "Doğum Günü"
+                },
+                new CustomFieldDto
+                {
+                    Name = "FavoriteTeam",
+                    DisplayNameEn = "Favorite Team",
+                    DisplayNameTr = "Favori Takım"
+                }
+            };
+
+            var dto = new CustomFieldSettingDto
+            {
+                CustomFieldDtos = customFields,
+                CompanyId = companyId
+            };
+
+            var result = _companyService.SetCustomerCustomFields(dto);
+            Assert.IsTrue(result);
+
+            var customFieldValues = new List<CustomFieldValueDto>
+            {
+                new CustomFieldValueDto
+                {
+                    Name = "Birthday",
+                    Value="1982-08-02"
+                },
+                new CustomFieldValueDto
+                {
+                    Name = "FavoriteTeam",
+                    Value= "Beşiktaş"
+                }
+            };
+
+            var customer = new CustomerDto
+            {
+                Email = "validcustomer@email.com",
+                FirstName = "Customer",
+                LastName = "Name",
+                Password = "customerpassword",
+                Language = "en",
+                CompanyId = companyId,
+                CompanyName = company.Name,
+                CreatedBy = user.Email,
+                CustomFieldValues = customFieldValues
+            };
+
+            var customerId = _customerService.CreateCustomer(customer);
+            Assert.IsNotNull(customerId);
         }
     }
 }
