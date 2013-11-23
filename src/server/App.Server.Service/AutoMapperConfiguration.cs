@@ -10,6 +10,9 @@ namespace App.Server.Service
         {
             Mapper.CreateMap(typeof (UserDto), typeof (User));
             Mapper.CreateMap(typeof (User), typeof (UserDto));
+
+            Mapper.CreateMap(typeof(CompanyDto), typeof(Company));
+            Mapper.CreateMap(typeof(Company), typeof(CompanyDto));
         }
     }
 }

@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\Company.cs" />
     <Compile Include="Repo\EntityRepository.cs" />
     <Compile Include="Repo\IEntityRepository.cs" />
     <Compile Include="Entity\User.cs" />

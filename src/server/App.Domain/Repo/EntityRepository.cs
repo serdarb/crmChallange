@@ -79,5 +79,9 @@ namespace App.Domain.Repo
         {
             return _collection.Save(doc);
         }
+        public WriteConcernResult DeleteAll()
+        {
+            return _collection.RemoveAll();
+        }
     }
 }

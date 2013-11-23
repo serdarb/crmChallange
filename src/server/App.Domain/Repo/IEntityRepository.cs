@@ -63,5 +63,12 @@ namespace App.Domain.Repo
         WriteConcernResult UpdateMulti(IMongoQuery mongoQuery, IMongoUpdate mongoUpdate);
 
         WriteConcernResult Save(TEntity doc);
+
+        /// <summary>
+        /// removes all documents from collection... 
+        /// use carefully not a soft delete operation!
+        /// </summary>
+        /// <returns></returns>
+        WriteConcernResult DeleteAll();
     }
 }

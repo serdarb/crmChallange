@@ -9,6 +9,6 @@ namespace App.Domain.Contracts
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Password { get; set; }
-        public string Lang { get; set; }
+        public string Language { get; set; }
     }
 }
