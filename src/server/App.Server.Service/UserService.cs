@@ -6,7 +6,7 @@ using AutoMapper;
 
 namespace App.Server.Service
 {
-    public class UserService
+    public class UserService : BaseService, IUserService
     {
         private readonly IEntityRepository<User> _userRepository;
 

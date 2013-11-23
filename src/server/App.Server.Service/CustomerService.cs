@@ -6,7 +6,7 @@ using AutoMapper;
 
 namespace App.Server.Service
 {
-    public class CustomerService
+    public class CustomerService : BaseService, ICustomerService
     {
         private readonly EntityRepository<Customer> _customerRepository;
         private readonly EntityRepository<Company> _companyRepository;
@@ -20,7 +20,6 @@ namespace App.Server.Service
             _companyRepository = companyRepository;
             _userRepository = userRepository;
         }
-
 
         public string CreateCustomer(CustomerDto dto)
         {

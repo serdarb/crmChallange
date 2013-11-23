@@ -12,13 +12,10 @@ namespace App.Domain.Repo
     {
         private readonly MongoCollection<TEntity> _collection;
 
-        public EntityRepository(string dbName = ConstHelper.DBName)
+        public EntityRepository()
         {
-            var mongoCnnStr = ConfigurationManager.AppSettings[ConstHelper.Mongo];
-            if (mongoCnnStr == null)
-            {
-                mongoCnnStr = "mongodb://localhost";
-            }
+            var mongoCnnStr = ConfigurationManager.AppSettings[ConstHelper.MongoCnnStr] ?? "mongodb://localhost";
+            var dbName = ConfigurationManager.AppSettings[ConstHelper.MongoDBName] ?? "TestDB";
             var concern = new WriteConcern { Journal = true, W = 1 };
 
             var mongoDatabase = new MongoClient(mongoCnnStr).GetServer().GetDatabase(dbName);

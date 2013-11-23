@@ -8,7 +8,7 @@ using MongoDB.Driver.Builders;
 
 namespace App.Server.Service
 {
-    public class CompanyService
+    public class CompanyService : BaseService, ICompanyService
     {
         private readonly IEntityRepository<Company> _companyRepository;
         private readonly IEntityRepository<User> _userRepository;

@@ -19,13 +19,13 @@ namespace App.Domain.Test
         {
             AutoMapperConfiguration.CreateMaps();
 
-            var userRepository = new EntityRepository<User>("TestDB");
+            var userRepository = new EntityRepository<User>();
             userRepository.DeleteAll();
 
-            var companyRepository = new EntityRepository<Company>("TestDB");
+            var companyRepository = new EntityRepository<Company>();
             companyRepository.DeleteAll();
 
-            var customerRepository = new EntityRepository<Customer>("TestDB");
+            var customerRepository = new EntityRepository<Customer>();
             customerRepository.DeleteAll();
 
             _userService = new UserService(userRepository);
