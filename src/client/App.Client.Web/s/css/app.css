@@ -5,12 +5,15 @@ form .input-group {
 .mylabel {
     width: 150px;
     text-align: left;
+
 }
 
 footer {
     margin-top: 122px;
 }
 
-h1 {
-    margin-bottom: -20px;
+.error {
+    color: red;
+    padding: 3px;
+    
 }
