@@ -40,6 +40,5 @@ C:\Work\crmChallange\src\client\App.Client.Web\bin\System.Web.Razor.xml
 C:\Work\crmChallange\src\client\App.Client.Web\bin\System.Web.WebPages.xml
 C:\Work\crmChallange\src\client\App.Client.Web\bin\System.Web.WebPages.Deployment.xml
 C:\Work\crmChallange\src\client\App.Client.Web\bin\System.Web.WebPages.Razor.xml
-C:\Work\crmChallange\src\client\App.Client.Web\obj\Debug\App.Client.Web.csprojResolveAssemblyReference.cache
 C:\Work\crmChallange\src\client\App.Client.Web\obj\Debug\App.Client.Web.dll
 C:\Work\crmChallange\src\client\App.Client.Web\obj\Debug\App.Client.Web.pdb

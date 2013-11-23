@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace App.Utils
 {
-    public class Class1
+    public class ConstHelper
     {
+        public const string Mongo = "Mongo";
+        public const string DBName = "ProdDB";
     }
 }

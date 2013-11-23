@@ -50,6 +50,20 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\core\App.Domain.Contracts\App.Domain.Contracts.csproj">
+      <Project>{2433D4B7-A11D-422F-850B-D188990C89B7}</Project>
+      <Name>App.Domain.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\server\App.Domain\App.Domain.csproj">
+      <Project>{BF30ACAB-7FCA-47D6-9D13-5260D35F166A}</Project>
+      <Name>App.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\server\App.Server.Service\App.Server.Service.csproj">
+      <Project>{166e28a9-0f2b-42b4-b0cb-f8761373f9d3}</Project>
+      <Name>App.Server.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
