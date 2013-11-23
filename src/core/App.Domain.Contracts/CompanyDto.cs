@@ -10,7 +10,9 @@ namespace App.Domain.Contracts
         public string Url { get; set; }
         public string AdminEmail { get; set; }
         public string AdminId { get; set; }
-        public List<string> CustomFields { get; set; }
+        public List<CustomFieldDto> CustomFields { get; set; }
         public string Language { get; set; }
     }
+
+    
 }

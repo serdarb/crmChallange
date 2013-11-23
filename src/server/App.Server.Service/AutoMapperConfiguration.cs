@@ -13,6 +13,9 @@ namespace App.Server.Service
 
             Mapper.CreateMap(typeof(CompanyDto), typeof(Company));
             Mapper.CreateMap(typeof(Company), typeof(CompanyDto));
+
+            Mapper.CreateMap(typeof(CustomFieldDto), typeof(CustomField));
+            Mapper.CreateMap(typeof(CustomField), typeof(CustomFieldDto));
         }
     }
 }

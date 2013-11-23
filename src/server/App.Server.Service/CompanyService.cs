@@ -3,6 +3,8 @@ using App.Domain;
 using App.Domain.Contracts;
 using App.Domain.Repo;
 using AutoMapper;
+using MongoDB.Bson;
+using MongoDB.Driver.Builders;
 
 namespace App.Server.Service
 {
@@ -43,6 +45,29 @@ namespace App.Server.Service
             var result = _companyRepository.Save(item);
 
             return result.Ok ? item.IdStr : null;
+        }
+
+        public bool SetCustomerCustomFields(CustomFieldSettingDto dto)
+        {
+            ObjectId cId;
+            if (string.IsNullOrEmpty(dto.CompanyId)
+                || !ObjectId.TryParse(dto.CompanyId, out cId)
+                || dto.CustomFieldDtos == null
+                || !dto.CustomFieldDtos.Any())
+            {
+                return false;
+            }
+
+            var company = _companyRepository.AsQueryable().FirstOrDefault(x => x.Id == cId);
+            if (company == null)
+            {
+                return false;
+            }
+
+            var mappedItems = dto.CustomFieldDtos.Select(Mapper.Map<CustomFieldDto, CustomField>).ToList();
+            var result = _companyRepository.Update(Query<Company>.EQ(x => x.Id, cId), Update<Company>.Set(x => x.CustomFields, mappedItems));
+
+            return result.Ok;
         }
     }
 }

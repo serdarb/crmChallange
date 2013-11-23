@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompanyDto.cs" />
+    <Compile Include="CustomFieldDto.cs" />
+    <Compile Include="CustomFieldSettingDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserDto.cs" />
   </ItemGroup>
