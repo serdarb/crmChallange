@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Domain
+namespace App.Server.Service
 {
-    class BaseEntity
+    public class Class1
     {
     }
 }
