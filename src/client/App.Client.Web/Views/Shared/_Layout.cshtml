@@ -8,24 +8,20 @@
     <title>App Web Client</title>
 
     <link rel="shortcut icon" href="/s/img/favicon.ico" />
-
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
-
-
-    <link href="/s/css/app.css?v=1" rel="stylesheet" type="text/css" media="screen" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="/s/css/app.css?v=1" />
 </head>
 <body>
-    
     <div id="main" class="container">
-        <header>
-            <h1>App</h1>
-        </header>
+        <h1>App</h1>
+
         <div class="row">
-            <div class="span12">
+            <div class="col-lg-12">
                 @RenderBody()
             </div>
         </div>
+
         <footer>
             &copy; @DateTime.Today.Year
         </footer>

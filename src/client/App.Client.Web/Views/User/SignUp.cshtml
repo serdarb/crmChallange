@@ -1,1 +1,40 @@
-﻿
+﻿<h3>Signup</h3>
+
+<div class="row col-lg-6">
+    <form action="/user/signup" method="post">
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon mylabel">Email</span>
+            <input type="text" class="form-control" name="Email" id="Email" />
+        </div>
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon mylabel">First Name</span>
+            <input type="text" class="form-control" name="FirstName" id="FirstName" />
+        </div>
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon mylabel">Last Name</span>
+            <input type="text" class="form-control" name="LastName" id="LastName" />
+        </div>
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon mylabel">Password</span>
+            <input type="password" class="form-control" name="Password" id="Password" />
+        </div>
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon mylabel">Language</span>
+            <select class="form-control" name="Language" id="Language">
+                <option value="en">English</option>
+                <option value="tr">Turkish</option>
+            </select>
+        </div>
+
+        @Html.AntiForgeryToken()
+
+        <div class="row" style="text-align: left;margin-left: 5px;margin-top: 10px;">
+            <input type="submit" value="Signup" class="btn btn-primary btn-lg" />
+        </div>
+    </form>
+</div>

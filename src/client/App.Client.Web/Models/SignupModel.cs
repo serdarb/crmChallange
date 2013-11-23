@@ -1,6 +1,6 @@
-﻿namespace App.Domain
+﻿namespace App.Client.Web.Models
 {
-    public class User : BaseEntity
+    public class SignupModel
     {
         public string Email { get; set; }
         public string FirstName { get; set; }
