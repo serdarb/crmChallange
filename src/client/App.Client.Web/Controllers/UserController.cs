@@ -10,7 +10,7 @@ namespace App.Client.Web.Controllers
 {
     public class UserController : Controller
     {
-        private IFormsAuthenticationService _formsAuthenticationService;
+        private readonly IFormsAuthenticationService _formsAuthenticationService;
         public UserController(IFormsAuthenticationService formsAuthenticationService)
         {
             _formsAuthenticationService = formsAuthenticationService;
@@ -29,6 +29,12 @@ namespace App.Client.Web.Controllers
             if (Request.UserHostAddress == "::1") { _formsAuthenticationService.SignIn("::1", true); }
             #endif
 
+            return View();
+        }
+
+        [HttpGet,AllowAnonymous]
+        public ActionResult SignUp()
+        {
             return View();
         }
     }

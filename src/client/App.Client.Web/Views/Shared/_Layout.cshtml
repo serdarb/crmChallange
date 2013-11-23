@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>App Web Client</title>
+
+    <link rel="shortcut icon" href="/s/img/favicon.ico" />
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
+
+
+    <link href="/s/css/app.css?v=1" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+    
+    <div id="main" class="container">
+        <header>
+            <h1>App</h1>
+        </header>
+        <div class="row">
+            <div class="span12">
+                @RenderBody()
+            </div>
+        </div>
+        <footer>
+            &copy; @DateTime.Today.Year
+        </footer>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+    @RenderSection("script", false)
+</body>
+</html>

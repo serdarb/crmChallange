@@ -1,11 +1,13 @@
-﻿using App.Domain.Contracts;
+﻿using System.ServiceModel;
 
-namespace App.Server.Service
+namespace App.Domain.Contracts
 {
+    [ServiceContract]
     public interface ICompanyService
     {
+        [OperationContract]
         string CreateCompany(CompanyDto dto);
-
+        [OperationContract]
         bool SetCustomerCustomFields(CustomFieldSettingDto dto);
     }
 }

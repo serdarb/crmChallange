@@ -29,6 +29,8 @@ namespace App.Server.Application
                 SendTimeout = new TimeSpan(0, 30, 0)
             };
             
+            AutoMapperConfiguration.CreateMaps();
+
             Container.Register(
                 Component.For<ExceptionInterceptor>(),
                 Component.For(typeof(IEntityRepository<>)).ImplementedBy(typeof(EntityRepository<>)),

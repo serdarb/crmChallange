@@ -9,7 +9,7 @@ using Castle.Windsor.Installer;
 
 namespace App.Client.Web
 {
-    public class Global : System.Web.HttpApplication
+    public class Global : HttpApplication
     {
         protected void Application_Start(object sender, EventArgs e)
         {
@@ -18,8 +18,8 @@ namespace App.Client.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            var _container = new WindsorContainer().Install(FromAssembly.This());
-            var controllerFactory = new WindsorControllerFactory(_container.Kernel);
+            var container = new WindsorContainer().Install(FromAssembly.This());
+            var controllerFactory = new WindsorControllerFactory(container.Kernel);
             ControllerBuilder.Current.SetControllerFactory(controllerFactory);
         }
 
@@ -28,6 +28,7 @@ namespace App.Client.Web
             HttpContext.Current.Response.Headers.Remove("X-Powered-By");
             HttpContext.Current.Response.Headers.Remove("X-AspNet-Version");
             HttpContext.Current.Response.Headers.Remove("X-AspNetMvc-Version");
+
             HttpContext.Current.Response.Headers.Set("Server", "My Web Server 1");
         }
     }

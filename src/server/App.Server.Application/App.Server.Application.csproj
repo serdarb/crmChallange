@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>App.Server.Application</RootNamespace>
     <AssemblyName>App.Server.Application</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
@@ -101,6 +101,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\core\App.Domain.Contracts\App.Domain.Contracts.csproj">
+      <Project>{2433d4b7-a11d-422f-850b-d188990c89b7}</Project>
+      <Name>App.Domain.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\core\App.Utils\App.Utils.csproj">
+      <Project>{9f4d8924-b951-4551-9307-384212a62b66}</Project>
+      <Name>App.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\App.Domain\App.Domain.csproj">
       <Project>{BF30ACAB-7FCA-47D6-9D13-5260D35F166A}</Project>
       <Name>App.Domain</Name>
