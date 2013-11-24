@@ -1,0 +1,97 @@
+﻿@model App.Client.Web.Models.CustomerCreateModel
+
+<h3>@ViewBag.Txt["NewCustomer"]</h3>
+
+<div class="row col-lg-6">
+    <form action="/customer/new" method="post">
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon mylabel">@ViewBag.Txt["Email"]</span>
+            <input type="text" class="form-control" name="email" id="email" value="@Model.Email" />
+        </div>
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon mylabel">@ViewBag.Txt["FirstName"]</span>
+            <input type="text" class="form-control" name="firstname" id="firstname" value="@Model.FirstName" />
+        </div>
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon mylabel">@ViewBag.Txt["LastName"]</span>
+            <input type="text" class="form-control" name="lastname" id="lastname" value="@Model.LastName" />
+        </div>
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon mylabel">@ViewBag.Txt["Password"]</span>
+            <input type="password" class="form-control" name="password" id="password" />
+        </div>
+
+        @if (Model.CustomFields != null
+            && Model.CustomFields.Any())
+        {
+            <div class="dvCustomField">
+                
+                @foreach (var field in Model.CustomFields)
+                {
+                    <div class="input-group input-group-lg">
+                        @if (Model.Language == "en")
+                        {
+                            <span class="input-group-addon mylabel">@field.DisplayNameEn</span>
+                        }
+                        else
+                        { 
+                             <span class="input-group-addon mylabel">@field.DisplayNameTr</span>
+                        }
+                        <input type="text" class="form-control" name="cf-@field.Name" id="cf-@field.Name" value="" />
+                    </div>
+                }
+
+            </div>
+        }
+
+
+
+        @Html.AntiForgeryToken()
+
+        <div class="row" style="text-align: left;margin-left: 5px;margin-top: 10px;">
+            <input type="submit" value="@ViewBag.Txt["Save"]" class="btn btn-primary btn-lg" />
+        </div>
+
+        <div class="error">
+            @Model.Msg
+        </div>
+
+    </form>
+</div>
+
+
+@section script
+{
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js" type="text/javascript"></script>
+    <script>
+        $(function () {
+            $("form").validate({
+                rules: {
+                    firstname: "required",
+                    lastname: "required",
+                    password: {
+                        required: true,
+                        minlength: 5
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    }
+                },
+                messages: {
+                    firstname: "*",
+                    lastname: "*",
+                    password: {
+                        required: "*",
+                        minlength: "*"
+                    },
+                    email: "*"
+                }
+            });
+        });
+    </script>
+}

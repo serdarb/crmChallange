@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>App Web Client</title>
+
+    <link rel="shortcut icon" href="/s/img/favicon.ico" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="/s/css/app.css?v=1" />
+</head>
+<body>
+
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">@ViewBag.Txt["App"]</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/home/index">@ViewBag.Txt["Home"]</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@ViewBag.Txt["Customer"] <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/customer/index">@ViewBag.Txt["ListCustomers"]</a></li>
+                                <li><a href="/customer/new">@ViewBag.Txt["AddNew"]</a></li>
+
+                                <li class="divider"></li>
+                                <li class="dropdown-header">@ViewBag.Txt["Settings"]</li>
+                                <li><a href="/company">@ViewBag.Txt["ListCustomFields"]</a></li>
+                                <li><a href="/company/new">@ViewBag.Txt["AddNewCustomField"]</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/user/logout">@ViewBag.Txt["Logout"]</a></li>
+                    </ul>
+                }
+                else
+                {
+                    if (Request.Path.ToLowerInvariant() == "/user/login")
+                    {
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/user/signup" style="color: red;">@ViewBag.Txt["Signup"]</a></li>
+                        </ul>
+                    }
+
+                    if (Request.Path.ToLowerInvariant() == "/user/signup")
+                    {
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/user/login" style="color: red;">@ViewBag.Txt["Login"]</a></li>
+                        </ul>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <div class="container" style="text-align: right;">
+        <a href="/home/lang/en"><img src="/s/img/en.png" alt="@ViewBag.Txt["English"]" /></a>
+        <a href="/home/lang/tr"><img src="/s/img/tr.png" alt="@ViewBag.Txt["Turkish"]" /></a>
+    </div>
+
+    <div id="main" class="container">
+
+        <div class="row">
+            @RenderBody()
+        </div>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+    @RenderSection("script", false)
+</body>
+</html>

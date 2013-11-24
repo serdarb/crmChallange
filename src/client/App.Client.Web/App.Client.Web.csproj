@@ -126,6 +126,7 @@
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Company\Index.cshtml" />
     <Content Include="Views\Company\New.cshtml" />
+    <None Include="Properties\PublishProfiles\crmchallange.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

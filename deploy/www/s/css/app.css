@@ -1,0 +1,22 @@
+form .input-group {
+    margin: 5px;
+}
+
+.mylabel {
+    width: 170px;
+    text-align: left;
+}
+
+#frmCompany .mylabel {
+    width: 220px;
+}
+
+footer {
+    margin-top: 122px;
+}
+
+.error {
+    color: red;
+    padding: 3px;
+    
+}

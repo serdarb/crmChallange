@@ -1,0 +1,27 @@
+﻿@model List<App.Domain.Contracts.CustomerDto>
+
+<h3>@ViewBag.Txt["ListCustomers"]</h3>
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>@ViewBag.Txt["Email"]</th>
+                <th>@ViewBag.Txt["FirstName"]</th>
+                <th>@ViewBag.Txt["LastName"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td>@Model[i].Email</td>
+                    <td>@Model[i].FirstName</td>
+                    <td>@Model[i].LastName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

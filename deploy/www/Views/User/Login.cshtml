@@ -1,0 +1,57 @@
+﻿@model App.Client.Web.Models.LoginModel
+
+<h3>@ViewBag.Txt["Login"]</h3>
+
+<div class="row col-lg-6">
+    <form action="/user/login" method="post">
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon mylabel">@ViewBag.Txt["Email"]</span>
+            <input type="text" class="form-control" name="email" id="email" value="@Model.Email" />
+        </div>
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon mylabel">@ViewBag.Txt["Password"]</span>
+            <input type="password" class="form-control" name="password" id="password"  />
+        </div>
+
+        @Html.AntiForgeryToken()
+
+        <div class="row" style="text-align: left;margin-left: 5px;margin-top: 10px;">
+            <input type="submit" value="@ViewBag.Txt["Login"]" class="btn btn-primary btn-lg" />
+        </div>
+        
+        <div class="error">
+            @Model.Msg
+        </div>
+    </form>
+</div>
+
+
+@section script
+{
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js" type="text/javascript"></script>
+    <script>
+        $(function () {
+            $("form").validate({
+                rules: {
+                    password: {
+                        required: true,
+                        minlength: 5
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    }
+                },
+                messages: {
+                    password: {
+                        required: "*",
+                        minlength: "*"
+                    },
+                    email: "*"
+                }
+            });
+        });
+    </script>
+}
