@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -21,6 +22,18 @@ namespace App.Client.Web
             var container = new WindsorContainer().Install(FromAssembly.This());
             var controllerFactory = new WindsorControllerFactory(container.Kernel);
             ControllerBuilder.Current.SetControllerFactory(controllerFactory);
+
+            var dictionary = new Dictionary<string, string>();
+            dictionary.Add("Email","Email");
+            dictionary.Add("FirstName", "First Name");
+
+            Application.Add("en_txt", dictionary);
+
+            dictionary = new Dictionary<string, string>();
+            dictionary.Add("Email", "Eposta");
+            dictionary.Add("FirstName", "Ad");
+
+            Application.Add("tr_txt", dictionary);
         }
 
         protected void Application_PreSendRequestHeaders(object sender, EventArgs e)

@@ -47,7 +47,8 @@
     <Compile Include="Entity\Company.cs" />
     <Compile Include="Entity\Customer.cs" />
     <Compile Include="Entity\CustomField.cs" />
-    <Compile Include="Entity\CustomFieldValue.cs" />
+    <Compile Include="Entity\LocalizationString.cs" />
+    <Compile Include="Entity\NameValue.cs" />
     <Compile Include="Repo\EntityRepository.cs" />
     <Compile Include="Repo\IEntityRepository.cs" />
     <Compile Include="Entity\User.cs" />

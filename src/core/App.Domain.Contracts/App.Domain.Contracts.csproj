@@ -41,9 +41,10 @@
     <Compile Include="CustomerDto.cs" />
     <Compile Include="CustomFieldDto.cs" />
     <Compile Include="CustomFieldSettingDto.cs" />
-    <Compile Include="CustomFieldValueDto.cs" />
+    <Compile Include="NameValueDto.cs" />
     <Compile Include="ICompanyService.cs" />
     <Compile Include="ICustomerService.cs" />
+    <Compile Include="ILocalizationService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserDto.cs" />

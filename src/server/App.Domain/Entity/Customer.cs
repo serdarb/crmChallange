@@ -11,6 +11,6 @@ namespace App.Domain
         public string Language { get; set; }
         public string CompanyId { get; set; }
         public string CompanyName { get; set; }
-        public List<CustomFieldValue> CustomFieldValues { get; set; }
+        public List<NameValue> CustomFieldValues { get; set; }
     }
 }

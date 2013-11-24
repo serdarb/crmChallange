@@ -1,3 +1,4 @@
+using System.Net.Mime;
 using System.Threading;
 using System.Web.Mvc;
 using App.Client.Web.Models;
@@ -35,6 +36,8 @@ namespace App.Client.Web.Controllers
                 Thread.CurrentThread.CurrentCulture = ConstHelper.CultureEN;
                 Thread.CurrentThread.CurrentUICulture = ConstHelper.CultureEN;
 
+                ViewBag.Txt = HttpContext.ApplicationInstance.Application["en_txt"];
+
                 if (User.Identity.IsAuthenticated)
                 {
                     switch (CurrentUser.Language)
@@ -42,6 +45,8 @@ namespace App.Client.Web.Controllers
                         case "en":
                             break;
                         case "tr":
+                            ViewBag.Txt = HttpContext.ApplicationInstance.Application["tr_txt"];
+
                             Thread.CurrentThread.CurrentCulture = ConstHelper.CultureTR;
                             Thread.CurrentThread.CurrentUICulture = ConstHelper.CultureTR;
                             break;

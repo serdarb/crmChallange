@@ -1,6 +1,6 @@
 ﻿namespace App.Domain
 {
-    public class CustomFieldValue
+    public class NameValue
     {
         public string Name { get; set; }
         public string Value { get; set; }

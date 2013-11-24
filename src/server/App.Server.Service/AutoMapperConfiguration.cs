@@ -17,8 +17,8 @@ namespace App.Server.Service
             Mapper.CreateMap(typeof(CustomFieldDto), typeof(CustomField));
             Mapper.CreateMap(typeof(CustomField), typeof(CustomFieldDto));
 
-            Mapper.CreateMap(typeof(CustomFieldValueDto), typeof(CustomFieldValue));
-            Mapper.CreateMap(typeof(CustomFieldValue), typeof(CustomFieldValueDto));
+            Mapper.CreateMap(typeof(NameValueDto), typeof(NameValue));
+            Mapper.CreateMap(typeof(NameValue), typeof(NameValueDto));
 
             Mapper.CreateMap(typeof(CustomerDto), typeof(Customer));
             Mapper.CreateMap(typeof(Customer), typeof(CustomerDto));

@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using System.Linq;
 using App.Domain.Contracts;
 using App.Domain.Repo;
 using App.Server.Service;
@@ -13,6 +14,7 @@ namespace App.Domain.Test
         private UserService _userService;
         private CompanyService _companyService;
         private CustomerService _customerService;
+        private LocalizationService _localizationService;
 
         [TestFixtureSetUp]
         public void setup_tests()
@@ -28,9 +30,13 @@ namespace App.Domain.Test
             var customerRepository = new EntityRepository<Customer>();
             customerRepository.DeleteAll();
 
+            var localizaitonRepository = new EntityRepository<LocalizationString>();
+            localizaitonRepository.DeleteAll();
+
             _userService = new UserService(userRepository);
             _companyService = new CompanyService(companyRepository, userRepository);
             _customerService = new CustomerService(customerRepository, companyRepository, userRepository);
+            _localizationService = new LocalizationService(localizaitonRepository);
         }
 
         [Test]
@@ -202,14 +208,14 @@ namespace App.Domain.Test
             var result = _companyService.SetCustomerCustomFields(dto);
             Assert.IsTrue(result);
 
-            var customFieldValues = new List<CustomFieldValueDto>
+            var customFieldValues = new List<NameValueDto>
             {
-                new CustomFieldValueDto
+                new NameValueDto
                 {
                     Name = "Birthday",
                     Value="1982-08-02"
                 },
-                new CustomFieldValueDto
+                new NameValueDto
                 {
                     Name = "FavoriteTeam",
                     Value= "Beşiktaş"
@@ -328,14 +334,14 @@ namespace App.Domain.Test
             var result = _companyService.SetCustomerCustomFields(dto);
             Assert.IsTrue(result);
 
-            var customFieldValues = new List<CustomFieldValueDto>
+            var customFieldValues = new List<NameValueDto>
             {
-                new CustomFieldValueDto
+                new NameValueDto
                 {
                     Name = "Birthday",
                     Value="1982-08-02"
                 },
-                new CustomFieldValueDto
+                new NameValueDto
                 {
                     Name = "FavoriteTeam",
                     Value= "Beşiktaş"
@@ -377,6 +383,16 @@ namespace App.Domain.Test
             var customers = await _customerService.GetAll();
             Assert.IsNotNull(customers);
             Assert.GreaterOrEqual(customers.Count, 2);
+        }
+
+        [Test]
+        public async void should_get_all_screen_texts()
+        {
+            var list = await _localizationService.GetAll("tr");
+            Assert.IsNotNull(list);
+
+            Assert.IsTrue(list.Any(x => x.Name == "Email"));
+            Assert.IsTrue(list.Any(x => x.Name == "Email" && x.Value == "E-posta"));
         }
     }
 }

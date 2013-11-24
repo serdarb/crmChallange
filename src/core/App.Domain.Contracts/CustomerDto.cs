@@ -23,6 +23,6 @@ namespace App.Domain.Contracts
         [DataMember]
         public string CreatedBy { get; set; }
         [DataMember]
-        public List<CustomFieldValueDto> CustomFieldValues { get; set; }
+        public List<NameValueDto> CustomFieldValues { get; set; }
     }
 }
