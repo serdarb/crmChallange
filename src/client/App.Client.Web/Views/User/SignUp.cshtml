@@ -1,21 +1,23 @@
-﻿<h3>Signup</h3>
+﻿@model App.Client.Web.Models.SignupModel
+
+<h3>Signup</h3>
 
 <div class="row col-lg-6">
     <form action="/user/signup" method="post">
 
         <div class="input-group input-group-lg">
             <span class="input-group-addon mylabel">Email</span>
-            <input type="text" class="form-control" name="email" id="email" />
+            <input type="text" class="form-control" name="email" id="email" value="@Model.Email" />
         </div>
 
         <div class="input-group input-group-lg">
             <span class="input-group-addon mylabel">First Name</span>
-            <input type="text" class="form-control" name="firstname" id="firstname" />
+            <input type="text" class="form-control" name="firstname" id="firstname" value="@Model.FirstName" />
         </div>
 
         <div class="input-group input-group-lg">
             <span class="input-group-addon mylabel">Last Name</span>
-            <input type="text" class="form-control" name="lastname" id="lastname" />
+            <input type="text" class="form-control" name="lastname" id="lastname" value="@Model.LastName" />
         </div>
 
         <div class="input-group input-group-lg">
@@ -25,18 +27,18 @@
         
         <div class="input-group input-group-lg">
             <span class="input-group-addon mylabel">Company Name</span>
-            <input type="text" class="form-control" name="companyname" id="companyname" />
+            <input type="text" class="form-control" name="companyname" id="companyname" value="@Model.CompanyName" />
         </div>
 
         <div class="input-group input-group-lg">
             <span class="input-group-addon mylabel">Company Url</span>
-            <input type="text" class="form-control" name="companyurl" id="companyurl" />
+            <input type="text" class="form-control" name="companyurl" id="companyurl" value="@Model.CompanyUrl" />
         </div>
 
         <div class="input-group input-group-lg">
             <span class="input-group-addon mylabel">Language</span>
             <select class="form-control" name="language" id="language">
-                <option value="en">English</option>
+                <option value="en" selected="selected">English</option>
                 <option value="tr">Turkish</option>
             </select>
         </div>

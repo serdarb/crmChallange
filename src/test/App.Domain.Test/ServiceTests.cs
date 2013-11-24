@@ -253,5 +253,26 @@ namespace App.Domain.Test
             Assert.AreEqual(result.Id, id);
             Assert.AreEqual(result.Email, dto.Email);
         }
+
+        [Test]
+        public void should_get_user_by_email()
+        {
+            var dto = new UserDto
+            {
+                Email = "valid7@email7.com",
+                FirstName = "Valid 7",
+                LastName = "Name 7",
+                Password = "password7",
+                Language = "en"
+            };
+
+            var id = _userService.CreateUser(dto);
+            Assert.IsNotNull(id);
+
+            var result = _userService.GetUserByEmail(dto.Email);
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result.Id, id);
+            Assert.AreEqual(result.Email, dto.Email);
+        }
     }
 }

@@ -1,10 +1,12 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
+
+using AutoMapper;
+using MongoDB.Bson;
+
 using App.Domain;
 using App.Domain.Contracts;
 using App.Domain.Repo;
-using AutoMapper;
-using MongoDB.Bson;
+using App.Utils;
 
 namespace App.Server.Service
 {
@@ -73,6 +75,24 @@ namespace App.Server.Service
             }
 
             var user = _userRepository.AsQueryable().FirstOrDefault(x => x.Id == _id);
+            if (user == null)
+            {
+                return null;
+            }
+
+            var item = Mapper.Map<User, UserDto>(user);
+            return item;
+        }
+
+        public UserDto GetUserByEmail(string email)
+        {
+            if (string.IsNullOrEmpty(email)
+                && !email.IsEmail())
+            {
+                return null;
+            }
+
+            var user = _userRepository.AsQueryable().FirstOrDefault(x => x.Email == email);
             if (user == null)
             {
                 return null;

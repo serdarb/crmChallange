@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
+
 using App.Client.Web.Models;
 using App.Client.Web.Services;
 using App.Domain.Contracts;
-using App.Utils;
 
 namespace App.Client.Web.Controllers
 {
@@ -22,28 +19,79 @@ namespace App.Client.Web.Controllers
             _companyService = companyService;
         }
 
-        [HttpGet]
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [HttpGet, AllowAnonymous]
         public ActionResult Login()
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToHome();
+            }
+
+            return View(new LoginModel());
+        }
+
+        [HttpPost, AllowAnonymous, ValidateAntiForgeryToken]
+        public ActionResult Login(LoginModel model)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToHome();
+            }
+
+            if (!model.IsValid(model))
+            {
+                model.Msg = "Failed, check fields and try again";
+                return View(model);
+            }
+
+            var userDto = new UserDto
+            {
+                Email = model.Email,
+                Password = model.Password
+            };
+
+            if (_userService.Authenticate(userDto))
+            {
+                var user = _userService.GetUserByEmail(model.Email);
+                _formsAuthenticationService.SignIn(user.Id, true);
+                return RedirectToHome();
+            }
+
+            model.Msg = "Failed, check fields and try again";
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                _formsAuthenticationService.SignOut();
+            }
+
+            return RedirectToHome();
         }
 
         [HttpGet, AllowAnonymous]
         public ActionResult SignUp()
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToHome();
+            }
+
+            return View(new SignupModel());
         }
 
         [HttpPost, AllowAnonymous, ValidateAntiForgeryToken]
         public ActionResult SignUp(SignupModel model)
         {
-            if (!IsModelValid(model))
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToHome();
+            }
+
+            if (!model.IsValid(model))
             {
                 model.Msg = "Failed, check fields and try again";
                 return View(model);
@@ -77,18 +125,6 @@ namespace App.Client.Web.Controllers
 
             _formsAuthenticationService.SignIn(userId, true);
             return RedirectToHome();
-        }
-
-        private static bool IsModelValid(SignupModel model)
-        {
-            return !string.IsNullOrEmpty(model.FirstName)
-                   && !string.IsNullOrEmpty(model.LastName)
-                   && !string.IsNullOrEmpty(model.Language)
-                   && !string.IsNullOrEmpty(model.Password)
-                   && !string.IsNullOrEmpty(model.CompanyName)
-                   && !string.IsNullOrEmpty(model.CompanyUrl)
-                   && !string.IsNullOrEmpty(model.Email)
-                   && model.Email.IsEmail();
         }
     }
 }

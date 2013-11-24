@@ -69,6 +69,10 @@
       <Project>{2433d4b7-a11d-422f-850b-d188990c89b7}</Project>
       <Name>App.Domain.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\core\App.Utils\App.Utils.csproj">
+      <Project>{9f4d8924-b951-4551-9307-384212a62b66}</Project>
+      <Name>App.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\App.Domain\App.Domain.csproj">
       <Project>{bf30acab-7fca-47d6-9d13-5260d35f166a}</Project>
       <Name>App.Domain</Name>

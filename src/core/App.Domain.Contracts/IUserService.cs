@@ -11,5 +11,7 @@ namespace App.Domain.Contracts
         bool Authenticate(UserDto dto);
         [OperationContract]
         UserDto GetUser(string id);
+        [OperationContract]
+        UserDto GetUserByEmail(string email);
     }
 }

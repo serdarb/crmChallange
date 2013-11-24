@@ -1,1 +1,61 @@
-﻿
+﻿@model App.Client.Web.Models.LoginModel
+
+<h3>Login</h3>
+
+<div class="row col-lg-6">
+    <form action="/user/login" method="post">
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon mylabel">Email</span>
+            <input type="text" class="form-control" name="email" id="email" value="@Model.Email" />
+        </div>
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon mylabel">Password</span>
+            <input type="password" class="form-control" name="password" id="password"  />
+        </div>
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon mylabel">Language</span>
+            <select class="form-control" name="language" id="language">
+                <option value="en">English</option>
+                <option value="tr">Turkish</option>
+            </select>
+        </div>
+
+        @Html.AntiForgeryToken()
+
+        <div class="row" style="text-align: left;margin-left: 5px;margin-top: 10px;">
+            <input type="submit" value="Login" class="btn btn-primary btn-lg" />
+        </div>
+    </form>
+</div>
+
+
+@section script
+{
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js" type="text/javascript"></script>
+    <script>
+        $(function () {
+            $("form").validate({
+                rules: {
+                    password: {
+                        required: true,
+                        minlength: 5
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    }
+                },
+                messages: {
+                    password: {
+                        required: "*",
+                        minlength: "*"
+                    },
+                    email: "*"
+                }
+            });
+        });
+    </script>
+}
