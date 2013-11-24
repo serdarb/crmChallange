@@ -32,11 +32,12 @@
 
                                 <li class="divider"></li>
                                 <li class="dropdown-header">@ViewBag.Txt["Settings"]</li>
-                                <li><a href="/company/customfields">@ViewBag.Txt["EditCustomFields"]</a></li>
+                                <li><a href="/company">@ViewBag.Txt["ListCustomFields"]</a></li>
+                                <li><a href="/company/new">@ViewBag.Txt["AddNewCustomField"]</a></li>
                             </ul>
                         </li>
                     </ul>
-                     <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right">
                         <li><a href="/user/logout">@ViewBag.Txt["Logout"]</a></li>
                     </ul>
                 }
@@ -48,7 +49,7 @@
                             <li><a href="/user/signup" style="color: red;">@ViewBag.Txt["Signup"]</a></li>
                         </ul>
                     }
-                    
+
                     if (Request.Path.ToLowerInvariant() == "/user/signup")
                     {
                         <ul class="nav navbar-nav navbar-right">
@@ -58,6 +59,10 @@
                 }
             </div>
         </div>
+    </div>
+    <div class="container" style="text-align: right;">
+        <a href="/home/lang/en"><img src="/s/img/en.png" alt="@ViewBag.Txt["English"]" /></a>
+        <a href="/home/lang/tr"><img src="/s/img/tr.png" alt="@ViewBag.Txt["Turkish"]" /></a>
     </div>
 
     <div id="main" class="container">

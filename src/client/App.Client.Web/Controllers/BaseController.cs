@@ -30,31 +30,45 @@ namespace App.Client.Web.Controllers
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+            SetLanguage();
+
+            base.OnActionExecuting(filterContext);
+        }
+
+        public void SetLanguage()
+        {
             try
             {
                 Thread.CurrentThread.CurrentCulture = ConstHelper.CultureEN;
                 Thread.CurrentThread.CurrentUICulture = ConstHelper.CultureEN;
 
-                ViewBag.Txt = HttpContext.Application[ConstHelper.tr_txt];
+                ViewBag.Txt = HttpContext.Application[ConstHelper.en_txt];
 
-                if (User.Identity.IsAuthenticated)
+                var langCookie = Request.Cookies["__Lang"];
+                if (langCookie != null)
                 {
-                    switch (CurrentUser.Language)
+                    var lang = langCookie.Value;
+                    if (lang == ConstHelper.tr)
                     {
-                        case ConstHelper.en:
-                            break;
-                        case ConstHelper.tr:
-                            ViewBag.Txt = HttpContext.Application[ConstHelper.tr_txt];
+                        ViewBag.Txt = HttpContext.Application[ConstHelper.tr_txt];
 
-                            Thread.CurrentThread.CurrentCulture = ConstHelper.CultureTR;
-                            Thread.CurrentThread.CurrentUICulture = ConstHelper.CultureTR;
-                            break;
+                        Thread.CurrentThread.CurrentCulture = ConstHelper.CultureTR;
+                        Thread.CurrentThread.CurrentUICulture = ConstHelper.CultureTR;
+                    }
+                }
+                else
+                {
+                    if (!User.Identity.IsAuthenticated) return;
+                    if (CurrentUser.Language == ConstHelper.tr)
+                    {
+                        ViewBag.Txt = HttpContext.Application[ConstHelper.tr_txt];
+
+                        Thread.CurrentThread.CurrentCulture = ConstHelper.CultureTR;
+                        Thread.CurrentThread.CurrentUICulture = ConstHelper.CultureTR;
                     }
                 }
             }
             catch { }
-
-            base.OnActionExecuting(filterContext);
         }
 
         private UserDto _currentUser;

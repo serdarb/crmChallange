@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using App.Domain;
 using App.Domain.Contracts;
 using App.Domain.Repo;
-using AutoMapper;
+using App.Utils;
 
 namespace App.Server.Service
 {
@@ -29,11 +30,11 @@ namespace App.Server.Service
             var list = new List<NameValueDto>();
             switch (culture)
             {
-                case "en":
+                case ConstHelper.en:
                     list.AddRange(strings.Select(item => new NameValueDto { Name = item.Name, Value = item.EN }));
 
                     break;
-                case "tr":
+                case ConstHelper.tr:
                     list.AddRange(strings.Select(item => new NameValueDto { Name = item.Name, Value = item.TR }));
                     break;
             }
@@ -54,6 +55,7 @@ namespace App.Server.Service
             list.Add(new LocalizationString { Name = "Email", EN = "Email", TR = "E-posta" });
             list.Add(new LocalizationString { Name = "Password", EN = "Password", TR = "Şifre" });
 
+            list.Add(new LocalizationString { Name = "Name", EN = "Name", TR = "Ad" });
             list.Add(new LocalizationString { Name = "FirstName", EN = "First Name", TR = "Ad" });
             list.Add(new LocalizationString { Name = "LastName", EN = "Last Name", TR = "Soyad" });
             list.Add(new LocalizationString { Name = "CompanyName", EN = "Company Name", TR = "Firma Adı" });
@@ -67,9 +69,14 @@ namespace App.Server.Service
             list.Add(new LocalizationString { Name = "ListCustomers", EN = "List Customers", TR = "Müşteri Listesi" });
             list.Add(new LocalizationString { Name = "AddNew", EN = "Add New", TR = "Yeni ekle" });
             list.Add(new LocalizationString { Name = "Settings", EN = "Settings", TR = "Ayarlar" });
-            list.Add(new LocalizationString { Name = "EditCustomFields", EN = "Edit Custom Fields", TR = "Özel alanları düzenle" });
+            list.Add(new LocalizationString { Name = "ListCustomFields", EN = "List Custom Fields", TR = "Özel alanlar" });
+            list.Add(new LocalizationString { Name = "AddNewCustomField", EN = "Add New Custom Field", TR = "Yeni özel alan ekle" });
             list.Add(new LocalizationString { Name = "Save", EN = "Save", TR = "Kaydet" });
             list.Add(new LocalizationString { Name = "NewCustomer", EN = "New Customer", TR = "Yeni Müşteri" });
+
+            list.Add(new LocalizationString { Name = "CompanyCustomFields", EN = "Company Custom Fields", TR = "Özel Alanlar" });
+            list.Add(new LocalizationString { Name = "DisplayNameTR", EN = "Display Name in Turkish", TR = "Türkçe Alan Adı" });
+            list.Add(new LocalizationString { Name = "DisplayNameEN", EN = "Display Name in English", TR = "İngilizce Alan Adı" });
 
             list.Add(new LocalizationString { Name = "FailMsg", EN = "Failed, check fields and try again", TR = "Lütfen girdiğiniz değerleri kontrol edip tekrar deneyiniz" });
 

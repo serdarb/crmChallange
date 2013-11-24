@@ -1,0 +1,56 @@
+﻿@model App.Client.Web.Models.CustomFieldCreateModel
+
+<h3>@ViewBag.Txt["AddNewCustomField"]</h3>
+
+<div class="row col-lg-6">
+    <form action="/company/new" method="post" id="frmCompany">
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon mylabel">@ViewBag.Txt["Name"]</span>
+            <input type="text" class="form-control" name="name" id="name" value="@Model.Name" />
+        </div>
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon mylabel">@ViewBag.Txt["DisplayNameTR"]</span>
+            <input type="text" class="form-control" name="displaytr" id="displaytr" value="@Model.DisplayTr" />
+        </div>
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon mylabel">@ViewBag.Txt["DisplayNameEN"]</span>
+            <input type="text" class="form-control" name="displayen" id="displayen" value="@Model.DisplayEn" />
+        </div>
+
+        @Html.AntiForgeryToken()
+
+        <div class="row" style="text-align: left;margin-left: 5px;margin-top: 10px;">
+            <input type="submit" value="@ViewBag.Txt["Save"]" class="btn btn-primary btn-lg" />
+        </div>
+
+        <div class="error">
+            @Model.Msg
+        </div>
+
+    </form>
+</div>
+
+
+@section script
+{
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js" type="text/javascript"></script>
+    <script>
+        $(function () {
+            $("form").validate({
+                rules: {
+                    displaytr: "required",
+                    displayen: "required",
+                    name:"required"
+                },
+                messages: {
+                    displaytr: "*",
+                    displayen: "*",
+                    name: "*"
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,27 @@
+﻿@model List<App.Domain.Contracts.CustomFieldDto>
+
+<h3>@ViewBag.Txt["CompanyCustomFields"]</h3>
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>@ViewBag.Txt["Name"]</th>
+                <th>@ViewBag.Txt["DisplayNameTR"]</th>
+                <th>@ViewBag.Txt["DisplayNameEN"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td>@Model[i].Name</td>
+                    <td>@Model[i].DisplayNameTr</td>
+                    <td>@Model[i].DisplayNameEn</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using App.Domain.Contracts;
 using App.Utils;
 
 namespace App.Client.Web.Models
@@ -9,6 +10,9 @@ namespace App.Client.Web.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Password { get; set; }
+        public List<CustomFieldDto> CustomFields { get; set; }
+
+        public string Language { get; set; }
 
         public bool IsValid(CustomerCreateModel model)
         {

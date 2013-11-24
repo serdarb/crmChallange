@@ -15,14 +15,6 @@
             <input type="password" class="form-control" name="password" id="password"  />
         </div>
 
-        <div class="input-group input-group-lg">
-            <span class="input-group-addon mylabel">@ViewBag.Txt["Language"]</span>
-            <select class="form-control" name="language" id="language">
-                <option value="en">@ViewBag.Txt["English"]</option>
-                <option value="tr">@ViewBag.Txt["Turkish"]</option>
-            </select>
-        </div>
-
         @Html.AntiForgeryToken()
 
         <div class="row" style="text-align: left;margin-left: 5px;margin-top: 10px;">

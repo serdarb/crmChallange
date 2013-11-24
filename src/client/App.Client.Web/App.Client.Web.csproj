@@ -111,7 +111,9 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="s\css\app.css" />
+    <Content Include="s\img\en.png" />
     <Content Include="s\img\favicon.ico" />
+    <Content Include="s\img\tr.png" />
     <Content Include="s\js\app.js" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -122,6 +124,8 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Customer\New.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Company\Index.cshtml" />
+    <Content Include="Views\Company\New.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -138,6 +142,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -146,6 +151,7 @@
     </Compile>
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\CustomerCreateModel.cs" />
+    <Compile Include="Models\CustomFieldCreateModel.cs" />
     <Compile Include="Models\CustomFieldModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\SignupModel.cs" />

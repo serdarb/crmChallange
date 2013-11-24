@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ServiceModel.Channels;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using App.Client.Web.Models;
@@ -9,14 +10,17 @@ namespace App.Client.Web.Controllers
 {
     public class CustomerController : BaseController
     {
+        private readonly ICompanyService _companyService;
         private readonly ICustomerService _customerService;
 
         public CustomerController(
             IUserService userService,
+            ICompanyService companyService,
             ICustomerService customerService,
             IFormsAuthenticationService formsAuthenticationService)
             : base(userService, formsAuthenticationService)
         {
+            _companyService = companyService;
             _customerService = customerService;
         }
 
@@ -28,9 +32,16 @@ namespace App.Client.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult New()
+        public async Task<ViewResult> New()
         {
-            return View(new CustomerCreateModel());
+            var model = new CustomerCreateModel();
+
+            var customFields = await _companyService.GetAllCustomFields(CurrentUser.CompanyId);
+            model.CustomFields = customFields;
+
+            model.Language = CurrentUser.Language;
+
+            return View(model);
         }
 
         [HttpPost, ValidateAntiForgeryToken]

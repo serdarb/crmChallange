@@ -5,7 +5,10 @@ form .input-group {
 .mylabel {
     width: 170px;
     text-align: left;
+}
 
+#frmCompany .mylabel {
+    width: 220px;
 }
 
 footer {
