@@ -274,5 +274,109 @@ namespace App.Domain.Test
             Assert.AreEqual(result.Id, id);
             Assert.AreEqual(result.Email, dto.Email);
         }
+
+        [Test]
+        public async void should_get_all_customers()
+        {
+            var user = new UserDto
+            {
+                Email = "valid8@email8.com",
+                FirstName = "Valid 8",
+                LastName = "Name 8",
+                Password = "password8",
+                Language = "en"
+            };
+
+            var id = _userService.CreateUser(user);
+            Assert.IsNotNull(id);
+
+            var company = new CompanyDto
+            {
+                Name = "Company Name 4",
+                Url = "company4.com",
+                AdminEmail = user.Email,
+                AdminId = id,
+                Language = user.Language,
+                CustomFields = new List<CustomFieldDto>()
+            };
+
+            var companyId = _companyService.CreateCompany(company);
+            Assert.IsNotNull(companyId);
+
+            var customFields = new List<CustomFieldDto>
+            {
+                new CustomFieldDto
+                {
+                    Name = "Birthday",
+                    DisplayNameEn = "Birthday",
+                    DisplayNameTr = "Doğum Günü"
+                },
+                new CustomFieldDto
+                {
+                    Name = "FavoriteTeam",
+                    DisplayNameEn = "Favorite Team",
+                    DisplayNameTr = "Favori Takım"
+                }
+            };
+
+            var dto = new CustomFieldSettingDto
+            {
+                CustomFieldDtos = customFields,
+                CompanyId = companyId
+            };
+
+            var result = _companyService.SetCustomerCustomFields(dto);
+            Assert.IsTrue(result);
+
+            var customFieldValues = new List<CustomFieldValueDto>
+            {
+                new CustomFieldValueDto
+                {
+                    Name = "Birthday",
+                    Value="1982-08-02"
+                },
+                new CustomFieldValueDto
+                {
+                    Name = "FavoriteTeam",
+                    Value= "Beşiktaş"
+                }
+            };
+
+            var customer = new CustomerDto
+            {
+                Email = "validcustomer2@email.com",
+                FirstName = "Customer 2",
+                LastName = "Name 2",
+                Password = "customerpassword 2",
+                Language = "en",
+                CompanyId = companyId,
+                CompanyName = company.Name,
+                CreatedBy = user.Email,
+                CustomFieldValues = customFieldValues
+            };
+
+            var customerId = _customerService.CreateCustomer(customer);
+            Assert.IsNotNull(customerId);
+
+            customer = new CustomerDto
+            {
+                Email = "validcustomer3@email.com",
+                FirstName = "Customer 3",
+                LastName = "Name 3",
+                Password = "customerpassword 3",
+                Language = "en",
+                CompanyId = companyId,
+                CompanyName = company.Name,
+                CreatedBy = user.Email,
+                CustomFieldValues = customFieldValues
+            };
+
+            customerId = _customerService.CreateCustomer(customer);
+            Assert.IsNotNull(customerId);
+
+            var customers = await _customerService.GetAll();
+            Assert.IsNotNull(customers);
+            Assert.GreaterOrEqual(customers.Count, 2);
+        }
     }
 }

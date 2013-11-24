@@ -1,8 +1,12 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+using AutoMapper;
+
 using App.Domain;
 using App.Domain.Contracts;
 using App.Domain.Repo;
-using AutoMapper;
 
 namespace App.Server.Service
 {
@@ -12,8 +16,8 @@ namespace App.Server.Service
         private readonly EntityRepository<Company> _companyRepository;
         private readonly EntityRepository<User> _userRepository;
 
-        public CustomerService(EntityRepository<Customer> customerRepository, 
-                               EntityRepository<Company> companyRepository, 
+        public CustomerService(EntityRepository<Customer> customerRepository,
+                               EntityRepository<Company> companyRepository,
                                EntityRepository<User> userRepository)
         {
             _customerRepository = customerRepository;
@@ -47,6 +51,13 @@ namespace App.Server.Service
             var result = _customerRepository.Save(item);
 
             return result.Ok ? item.IdStr : null;
+        }
+
+        public Task<List<CustomerDto>> GetAll()
+        {
+            var customers = _customerRepository.FindAll();
+            var list = customers.Select(Mapper.Map<Customer, CustomerDto>).ToList();
+            return Task.FromResult(list);
         }
     }
 }
