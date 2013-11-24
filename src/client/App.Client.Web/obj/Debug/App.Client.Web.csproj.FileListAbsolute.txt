@@ -24,10 +24,12 @@ C:\Work\crmChallange\src\client\App.Client.Web\bin\App.Client.Web.dll.config
 C:\Work\crmChallange\src\client\App.Client.Web\bin\App.Client.Web.dll
 C:\Work\crmChallange\src\client\App.Client.Web\bin\App.Client.Web.pdb
 C:\Work\crmChallange\src\client\App.Client.Web\bin\App.Domain.Contracts.dll
+C:\Work\crmChallange\src\client\App.Client.Web\bin\App.Utils.dll
 C:\Work\crmChallange\src\client\App.Client.Web\bin\Castle.Core.dll
 C:\Work\crmChallange\src\client\App.Client.Web\bin\Castle.Facilities.WcfIntegration.dll
 C:\Work\crmChallange\src\client\App.Client.Web\bin\Castle.Windsor.dll
 C:\Work\crmChallange\src\client\App.Client.Web\bin\Microsoft.Web.Infrastructure.dll
+C:\Work\crmChallange\src\client\App.Client.Web\bin\MongoDB.Bson.dll
 C:\Work\crmChallange\src\client\App.Client.Web\bin\System.Web.Helpers.dll
 C:\Work\crmChallange\src\client\App.Client.Web\bin\System.Web.Mvc.dll
 C:\Work\crmChallange\src\client\App.Client.Web\bin\System.Web.Optimization.dll
@@ -36,9 +38,11 @@ C:\Work\crmChallange\src\client\App.Client.Web\bin\System.Web.WebPages.Deploymen
 C:\Work\crmChallange\src\client\App.Client.Web\bin\System.Web.WebPages.dll
 C:\Work\crmChallange\src\client\App.Client.Web\bin\System.Web.WebPages.Razor.dll
 C:\Work\crmChallange\src\client\App.Client.Web\bin\App.Domain.Contracts.pdb
+C:\Work\crmChallange\src\client\App.Client.Web\bin\App.Utils.pdb
 C:\Work\crmChallange\src\client\App.Client.Web\bin\Castle.Core.xml
 C:\Work\crmChallange\src\client\App.Client.Web\bin\Castle.Facilities.WcfIntegration.xml
 C:\Work\crmChallange\src\client\App.Client.Web\bin\Castle.Windsor.xml
+C:\Work\crmChallange\src\client\App.Client.Web\bin\MongoDB.Bson.xml
 C:\Work\crmChallange\src\client\App.Client.Web\bin\System.Web.Helpers.xml
 C:\Work\crmChallange\src\client\App.Client.Web\bin\System.Web.Mvc.xml
 C:\Work\crmChallange\src\client\App.Client.Web\bin\System.Web.Optimization.xml

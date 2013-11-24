@@ -15,5 +15,7 @@ namespace App.Domain.Contracts
         public string Password { get; set; }
         [DataMember]
         public string Language { get; set; }
+        [DataMember]
+        public string Id { get; set; }
     }
 }

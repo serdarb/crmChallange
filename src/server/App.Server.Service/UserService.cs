@@ -1,8 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using App.Domain;
 using App.Domain.Contracts;
 using App.Domain.Repo;
 using AutoMapper;
+using MongoDB.Bson;
 
 namespace App.Server.Service
 {
@@ -55,6 +57,29 @@ namespace App.Server.Service
             }
 
             return user.Password == dto.Password;
+        }
+
+        public UserDto GetUser(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return null;
+            }
+
+            ObjectId _id;
+            if (!ObjectId.TryParse(id, out _id))
+            {
+                return null;
+            }
+
+            var user = _userRepository.AsQueryable().FirstOrDefault(x => x.Id == _id);
+            if (user == null)
+            {
+                return null;
+            }
+
+            var item = Mapper.Map<User, UserDto>(user);
+            return item;
         }
     }
 }

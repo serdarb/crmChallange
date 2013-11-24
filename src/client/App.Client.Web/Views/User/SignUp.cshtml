@@ -22,6 +22,16 @@
             <span class="input-group-addon mylabel">Password</span>
             <input type="password" class="form-control" name="password" id="password" />
         </div>
+        
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon mylabel">Company Name</span>
+            <input type="text" class="form-control" name="companyname" id="companyname" />
+        </div>
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon mylabel">Company Url</span>
+            <input type="text" class="form-control" name="companyurl" id="companyurl" />
+        </div>
 
         <div class="input-group input-group-lg">
             <span class="input-group-addon mylabel">Language</span>
@@ -49,6 +59,8 @@
                 rules: {
                     firstname: "required",
                     lastname: "required",
+                    companyurl: "required",
+                    companyname: "required",
                     password: {
                         required: true,
                         minlength: 5
@@ -59,13 +71,15 @@
                     }
                 },
                 messages: {
-                    firstname: "Please enter your firstname",
-                    lastname: "Please enter your lastname",
+                    firstname: "*",
+                    lastname: "*",
+                    companyurl: "*",
+                    companyname: "*",
                     password: {
-                        required: "Please provide a password",
-                        minlength: "Your password must be at least 5 characters long"
+                        required: "*",
+                        minlength: "*"
                     },
-                    email: "Please enter a valid email address"
+                    email: "*"
                 }
             });
         });

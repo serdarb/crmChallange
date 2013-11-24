@@ -9,5 +9,7 @@ namespace App.Domain.Contracts
         string CreateUser(UserDto dto);
         [OperationContract]
         bool Authenticate(UserDto dto);
+        [OperationContract]
+        UserDto GetUser(string id);
     }
 }

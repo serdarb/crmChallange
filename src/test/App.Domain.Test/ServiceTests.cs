@@ -232,5 +232,26 @@ namespace App.Domain.Test
             var customerId = _customerService.CreateCustomer(customer);
             Assert.IsNotNull(customerId);
         }
+
+        [Test]
+        public void should_get_user()
+        {
+            var dto = new UserDto
+            {
+                Email = "valid6@email6.com",
+                FirstName = "Valid 6",
+                LastName = "Name 6",
+                Password = "password6",
+                Language = "en"
+            };
+
+            var id = _userService.CreateUser(dto);
+            Assert.IsNotNull(id);
+
+            var result = _userService.GetUser(id);
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result.Id, id);
+            Assert.AreEqual(result.Email, dto.Email);
+        }
     }
 }
