@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
 using App.Client.Web.App_Start;
+using App.Domain.Contracts;
+using App.Utils;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
 
@@ -19,21 +22,28 @@ namespace App.Client.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
+            var container = PrepareIocContainer();
+
+            PrepareLocalizationStrings(container);
+        }
+
+        private static IWindsorContainer PrepareIocContainer()
+        {
             var container = new WindsorContainer().Install(FromAssembly.This());
             var controllerFactory = new WindsorControllerFactory(container.Kernel);
             ControllerBuilder.Current.SetControllerFactory(controllerFactory);
+            return container;
+        }
 
-            var dictionary = new Dictionary<string, string>();
-            dictionary.Add("Email","Email");
-            dictionary.Add("FirstName", "First Name");
+        private void PrepareLocalizationStrings(IWindsorContainer container)
+        {
+            var localizationService = container.Resolve<ILocalizationService>();
 
-            Application.Add("en_txt", dictionary);
-
-            dictionary = new Dictionary<string, string>();
-            dictionary.Add("Email", "Eposta");
-            dictionary.Add("FirstName", "Ad");
-
-            Application.Add("tr_txt", dictionary);
+            var trTexts = localizationService.GetAll(ConstHelper.tr).Result.ToDictionary(item => item.Name, item => item.Value);
+            var enTexts = localizationService.GetAll(ConstHelper.en).Result.ToDictionary(item => item.Name, item => item.Value);
+            Application.Add(ConstHelper.en_txt, enTexts);
+            Application.Add(ConstHelper.tr_txt, trTexts);
+            container.Release(localizationService);
         }
 
         protected void Application_PreSendRequestHeaders(object sender, EventArgs e)

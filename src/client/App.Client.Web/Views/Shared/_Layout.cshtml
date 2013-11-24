@@ -18,7 +18,6 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">App</a>
-                @ViewBag.Txt["FirstName"]
             </div>
             <div class="navbar-collapse collapse">
                 @if (User.Identity.IsAuthenticated)
@@ -38,7 +37,7 @@
                         </li>
                     </ul>
                      <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/user/logout">Logout</a></li>
+                        <li><a href="/user/logout">@ViewBag.Txt["Logout"]</a></li>
                     </ul>
                 }
                 else
@@ -46,14 +45,14 @@
                     if (Request.Path.ToLowerInvariant() == "/user/login")
                     {
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="/user/signup" style="color: red;">Signup</a></li>
+                            <li><a href="/user/signup" style="color: red;">@ViewBag.Txt["Signup"]</a></li>
                         </ul>
                     }
                     
                     if (Request.Path.ToLowerInvariant() == "/user/signup")
                     {
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="/user/login" style="color: red;">Login</a></li>
+                            <li><a href="/user/login" style="color: red;">@ViewBag.Txt["Login"]</a></li>
                         </ul>
                     }
                 }

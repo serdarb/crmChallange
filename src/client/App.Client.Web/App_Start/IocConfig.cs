@@ -64,14 +64,17 @@ namespace App.Client.Web.App_Start
             };
 
             container.AddFacility<WcfFacility>();
+            container.Register(Component.For<ILocalizationService>()
+                     .AsWcfClient(new DefaultClientModel { Endpoint = WcfEndpoint.BoundTo(netNamedPipeBinding).At("net.pipe://localhost/LocalizationService") }));
+
+            container.Register(Component.For<ICustomerService>()
+                     .AsWcfClient(new DefaultClientModel { Endpoint = WcfEndpoint.BoundTo(netNamedPipeBinding).At("net.pipe://localhost/CustomerService") })
+                     .LifestylePerWebRequest());
             container.Register(Component.For<IUserService>()
                      .AsWcfClient(new DefaultClientModel { Endpoint = WcfEndpoint.BoundTo(netNamedPipeBinding).At("net.pipe://localhost/UserService") })
                      .LifestylePerWebRequest());
             container.Register(Component.For<ICompanyService>()
                      .AsWcfClient(new DefaultClientModel { Endpoint = WcfEndpoint.BoundTo(netNamedPipeBinding).At("net.pipe://localhost/CompanyService") })
-                     .LifestylePerWebRequest());
-            container.Register(Component.For<ICustomerService>()
-                     .AsWcfClient(new DefaultClientModel { Endpoint = WcfEndpoint.BoundTo(netNamedPipeBinding).At("net.pipe://localhost/CustomerService") })
                      .LifestylePerWebRequest());
         }
     }

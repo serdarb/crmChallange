@@ -33,7 +33,7 @@ namespace App.Server.Application
 
             Container.Register(
                 Component.For<ExceptionInterceptor>(),
-                Component.For(typeof(IEntityRepository<>)).ImplementedBy(typeof(EntityRepository<>)),
+                Component.For(typeof(IEntityRepository<>)).ImplementedBy(typeof(EntityRepository<>)).LifestyleTransient(),
                 Types.FromAssemblyNamed("App.Server.Service")
                      .Pick()
                      .If(type => type.GetInterfaces().Any(i => i.IsDefined(typeof(ServiceContractAttribute), true) && i.Name != typeof(BaseService).Name))

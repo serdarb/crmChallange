@@ -12,13 +12,13 @@ namespace App.Server.Service
 {
     public class CustomerService : BaseService, ICustomerService
     {
-        private readonly EntityRepository<Customer> _customerRepository;
-        private readonly EntityRepository<Company> _companyRepository;
-        private readonly EntityRepository<User> _userRepository;
+        private readonly IEntityRepository<Customer> _customerRepository;
+        private readonly IEntityRepository<Company> _companyRepository;
+        private readonly IEntityRepository<User> _userRepository;
 
-        public CustomerService(EntityRepository<Customer> customerRepository,
-                               EntityRepository<Company> companyRepository,
-                               EntityRepository<User> userRepository)
+        public CustomerService(IEntityRepository<Customer> customerRepository,
+                               IEntityRepository<Company> companyRepository,
+                               IEntityRepository<User> userRepository)
         {
             _customerRepository = customerRepository;
             _companyRepository = companyRepository;

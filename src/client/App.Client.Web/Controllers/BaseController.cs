@@ -1,7 +1,6 @@
-using System.Net.Mime;
 using System.Threading;
 using System.Web.Mvc;
-using App.Client.Web.Models;
+
 using MongoDB.Bson;
 
 using App.Client.Web.Services;
@@ -36,16 +35,16 @@ namespace App.Client.Web.Controllers
                 Thread.CurrentThread.CurrentCulture = ConstHelper.CultureEN;
                 Thread.CurrentThread.CurrentUICulture = ConstHelper.CultureEN;
 
-                ViewBag.Txt = HttpContext.ApplicationInstance.Application["en_txt"];
+                ViewBag.Txt = HttpContext.Application[ConstHelper.en_txt];
 
                 if (User.Identity.IsAuthenticated)
                 {
                     switch (CurrentUser.Language)
                     {
-                        case "en":
+                        case ConstHelper.en:
                             break;
-                        case "tr":
-                            ViewBag.Txt = HttpContext.ApplicationInstance.Application["tr_txt"];
+                        case ConstHelper.tr:
+                            ViewBag.Txt = HttpContext.Application[ConstHelper.tr_txt];
 
                             Thread.CurrentThread.CurrentCulture = ConstHelper.CultureTR;
                             Thread.CurrentThread.CurrentUICulture = ConstHelper.CultureTR;

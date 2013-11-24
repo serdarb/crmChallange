@@ -8,11 +8,11 @@ using AutoMapper;
 
 namespace App.Server.Service
 {
-    public class LocalizationService : ILocalizationService
+    public class LocalizationService : BaseService, ILocalizationService
     {
-        private readonly EntityRepository<LocalizationString> _repository;
+        private readonly IEntityRepository<LocalizationString> _repository;
 
-        public LocalizationService(EntityRepository<LocalizationString> repository)
+        public LocalizationService(IEntityRepository<LocalizationString> repository)
         {
             _repository = repository;
         }
