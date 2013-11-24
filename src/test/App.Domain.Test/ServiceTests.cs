@@ -99,6 +99,11 @@ namespace App.Domain.Test
 
             var companyId = _companyService.CreateCompany(company);
             Assert.IsNotNull(companyId);
+
+            var user2 = _userService.GetUser(id);
+
+            Assert.AreEqual(companyId, user2.CompanyId);
+            Assert.AreEqual(company.Name, user2.CompanyName);
         }
 
         [Test]

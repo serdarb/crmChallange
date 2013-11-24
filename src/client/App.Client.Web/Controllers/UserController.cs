@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net.Mime;
 using System.Web.Mvc;
 
 using App.Client.Web.Models;
@@ -40,7 +41,7 @@ namespace App.Client.Web.Controllers
 
             if (!model.IsValid(model))
             {
-                model.Msg = "Failed, check fields and try again";
+                model.Msg = ViewBag.Txt["FailMsg"];
                 return View(model);
             }
 
@@ -57,7 +58,7 @@ namespace App.Client.Web.Controllers
                 return RedirectToHome();
             }
 
-            model.Msg = "Failed, check fields and try again";
+            model.Msg = ViewBag.Txt["FailMsg"];
             return View(model);
         }
 
@@ -93,7 +94,7 @@ namespace App.Client.Web.Controllers
 
             if (!model.IsValid(model))
             {
-                model.Msg = "Failed, check fields and try again";
+                model.Msg = ViewBag.Txt["FailMsg"];
                 return View(model);
             }
 
@@ -109,7 +110,7 @@ namespace App.Client.Web.Controllers
             var userId = _userService.CreateUser(userDto);
             if (userId == null)
             {
-                model.Msg = "Failed, check fields and try again";
+                model.Msg = ViewBag.Txt["FailMsg"];
                 return View(model);
             }
 

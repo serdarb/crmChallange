@@ -1,15 +1,15 @@
 ﻿@model List<App.Domain.Contracts.CustomerDto>
 
-<h3>Customers</h3>
+<h3>@ViewBag.Txt["ListCustomers"]</h3>
 
 <div class="table-responsive">
     <table class="table table-bordered">
         <thead>
             <tr>
                 <th>#</th>
-                <th>Email</th>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>@ViewBag.Txt["Email"]</th>
+                <th>@ViewBag.Txt["FirstName"]</th>
+                <th>@ViewBag.Txt["LastName"]</th>
             </tr>
         </thead>
         <tbody>

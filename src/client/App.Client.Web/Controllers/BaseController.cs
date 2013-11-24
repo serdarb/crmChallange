@@ -35,7 +35,7 @@ namespace App.Client.Web.Controllers
                 Thread.CurrentThread.CurrentCulture = ConstHelper.CultureEN;
                 Thread.CurrentThread.CurrentUICulture = ConstHelper.CultureEN;
 
-                ViewBag.Txt = HttpContext.Application[ConstHelper.en_txt];
+                ViewBag.Txt = HttpContext.Application[ConstHelper.tr_txt];
 
                 if (User.Identity.IsAuthenticated)
                 {

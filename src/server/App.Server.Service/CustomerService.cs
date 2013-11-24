@@ -7,6 +7,7 @@ using AutoMapper;
 using App.Domain;
 using App.Domain.Contracts;
 using App.Domain.Repo;
+using MongoDB.Bson;
 
 namespace App.Server.Service
 {
@@ -34,7 +35,13 @@ namespace App.Server.Service
                 return null;
             }
 
-            var user = _userRepository.AsQueryable().FirstOrDefault(x => x.Email == dto.CreatedBy);
+            ObjectId uId;
+            if (!ObjectId.TryParse(dto.CreatedBy, out uId))
+            {
+                return null;
+            }
+
+            var user = _userRepository.AsQueryable().FirstOrDefault(x => x.Id == uId);
             if (user == null)
             {
                 return null;

@@ -1,52 +1,56 @@
 ﻿@model App.Client.Web.Models.SignupModel
 
-<h3>Signup</h3>
+<h3>@ViewBag.Txt["Signup"]</h3>
 
 <div class="row col-lg-6">
     <form action="/user/signup" method="post">
 
         <div class="input-group input-group-lg">
-            <span class="input-group-addon mylabel">Email</span>
+            <span class="input-group-addon mylabel">@ViewBag.Txt["Email"]</span>
             <input type="text" class="form-control" name="email" id="email" value="@Model.Email" />
         </div>
 
         <div class="input-group input-group-lg">
-            <span class="input-group-addon mylabel">First Name</span>
+            <span class="input-group-addon mylabel">@ViewBag.Txt["FirstName"]</span>
             <input type="text" class="form-control" name="firstname" id="firstname" value="@Model.FirstName" />
         </div>
 
         <div class="input-group input-group-lg">
-            <span class="input-group-addon mylabel">Last Name</span>
+            <span class="input-group-addon mylabel">@ViewBag.Txt["LastName"]</span>
             <input type="text" class="form-control" name="lastname" id="lastname" value="@Model.LastName" />
         </div>
 
         <div class="input-group input-group-lg">
-            <span class="input-group-addon mylabel">Password</span>
+            <span class="input-group-addon mylabel">@ViewBag.Txt["Password"]</span>
             <input type="password" class="form-control" name="password" id="password" />
         </div>
         
         <div class="input-group input-group-lg">
-            <span class="input-group-addon mylabel">Company Name</span>
+            <span class="input-group-addon mylabel">@ViewBag.Txt["CompanyName"]</span>
             <input type="text" class="form-control" name="companyname" id="companyname" value="@Model.CompanyName" />
         </div>
 
         <div class="input-group input-group-lg">
-            <span class="input-group-addon mylabel">Company Url</span>
+            <span class="input-group-addon mylabel">@ViewBag.Txt["CompanyUrl"]</span>
             <input type="text" class="form-control" name="companyurl" id="companyurl" value="@Model.CompanyUrl" />
         </div>
 
         <div class="input-group input-group-lg">
-            <span class="input-group-addon mylabel">Language</span>
+            <span class="input-group-addon mylabel">@ViewBag.Txt["Language"]</span>
             <select class="form-control" name="language" id="language">
-                <option value="en" selected="selected">English</option>
-                <option value="tr">Turkish</option>
+                <option value="en">@ViewBag.Txt["English"]</option>
+                <option value="tr">@ViewBag.Txt["Turkish"]</option>
             </select>
         </div>
 
         @Html.AntiForgeryToken()
 
         <div class="row" style="text-align: left;margin-left: 5px;margin-top: 10px;">
-            <input type="submit" value="Signup" class="btn btn-primary btn-lg" />
+            <input type="submit" value="@ViewBag.Txt["Signup"]" class="btn btn-primary btn-lg" />
+        </div>
+        
+        <div class="error">
+            @Model.Msg
         </div>
     </form>
 </div>

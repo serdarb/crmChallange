@@ -46,6 +46,11 @@ namespace App.Server.Service
             dto.AdminId = user.IdStr;
             var item = Mapper.Map<CompanyDto, Company>(dto);
             var result = _companyRepository.Save(item);
+            if (result.Ok)
+            {
+                _userRepository.Update(Query<User>.EQ(x => x.Id, user.Id),
+                    Update<User>.Set(x => x.CompanyId, item.IdStr).Set(x => x.CompanyName, item.Name));
+            }
 
             return result.Ok ? item.IdStr : null;
         }

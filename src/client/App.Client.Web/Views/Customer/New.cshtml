@@ -1,35 +1,40 @@
 ﻿    @model App.Client.Web.Models.CustomerCreateModel
 
-<h3>New Customer</h3>
+<h3>@ViewBag.Txt["NewCustomer"]</h3>
 
 <div class="row col-lg-6">
     <form action="/customer/new" method="post">
 
         <div class="input-group input-group-lg">
-            <span class="input-group-addon mylabel">Email</span>
+            <span class="input-group-addon mylabel">@ViewBag.Txt["Email"]</span>
             <input type="text" class="form-control" name="email" id="email" value="@Model.Email" />
         </div>
 
         <div class="input-group input-group-lg">
-            <span class="input-group-addon mylabel">First Name</span>
+            <span class="input-group-addon mylabel">@ViewBag.Txt["FirstName"]</span>
             <input type="text" class="form-control" name="firstname" id="firstname" value="@Model.FirstName" />
         </div>
 
         <div class="input-group input-group-lg">
-            <span class="input-group-addon mylabel">Last Name</span>
+            <span class="input-group-addon mylabel">@ViewBag.Txt["LastName"]</span>
             <input type="text" class="form-control" name="lastname" id="lastname" value="@Model.LastName" />
         </div>
 
         <div class="input-group input-group-lg">
-            <span class="input-group-addon mylabel">Password</span>
+            <span class="input-group-addon mylabel">@ViewBag.Txt["Password"]</span>
             <input type="password" class="form-control" name="password" id="password" />
         </div>
 
         @Html.AntiForgeryToken()
 
         <div class="row" style="text-align: left;margin-left: 5px;margin-top: 10px;">
-            <input type="submit" value="Save" class="btn btn-primary btn-lg" />
+            <input type="submit" value="@ViewBag.Txt["Save"]" class="btn btn-primary btn-lg" />
         </div>
+        
+        <div class="error">
+            @Model.Msg
+        </div>
+
     </form>
 </div>
 

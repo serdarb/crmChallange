@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using App.Client.Web.Models;
@@ -37,7 +38,7 @@ namespace App.Client.Web.Controllers
         {
             if (!model.IsValid(model))
             {
-                model.Msg = "Failed, check fields and try again";
+                model.Msg = ViewBag.Txt["FailMsg"];
                 return View(model);
             }
 
@@ -46,13 +47,18 @@ namespace App.Client.Web.Controllers
                 Email = model.Email,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
-                Password = model.Password
+                Password = model.Password,
+                CompanyId = CurrentUser.CompanyId,
+                CompanyName = CurrentUser.CompanyName,
+                Language = CurrentUser.Language,
+                CreatedBy = CurrentUser.Id,
+                CustomFieldValues = new List<NameValueDto>()
             };
 
             var customerId = _customerService.CreateCustomer(customerDto);
             if (customerId == null)
             {
-                model.Msg = "Failed, check fields and try again";
+                model.Msg = ViewBag.Txt["FailMsg"];
                 return View(model);
             }
 

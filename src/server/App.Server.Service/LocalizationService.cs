@@ -45,6 +45,8 @@ namespace App.Server.Service
         {
             var list = new List<LocalizationString>();
 
+            list.Add(new LocalizationString { Name = "App", EN = "App", TR = "Uygulama" });
+
             list.Add(new LocalizationString { Name = "English", EN = "English", TR = "İngilizce" });
             list.Add(new LocalizationString { Name = "Turkish", EN = "Turkish", TR = "Türkçe" });
 
@@ -60,6 +62,18 @@ namespace App.Server.Service
             list.Add(new LocalizationString { Name = "Signup", EN = "Signup", TR = "Üye Ol" });
             list.Add(new LocalizationString { Name = "Login", EN = "Login", TR = "Giriş" });
             list.Add(new LocalizationString { Name = "Logout", EN = "Logut", TR = "Çıkış" });
+            list.Add(new LocalizationString { Name = "Home", EN = "Home", TR = "Ana Sayfa" });
+            list.Add(new LocalizationString { Name = "Customer", EN = "Customer", TR = "Müşteri" });
+            list.Add(new LocalizationString { Name = "ListCustomers", EN = "List Customers", TR = "Müşteri Listesi" });
+            list.Add(new LocalizationString { Name = "AddNew", EN = "Add New", TR = "Yeni ekle" });
+            list.Add(new LocalizationString { Name = "Settings", EN = "Settings", TR = "Ayarlar" });
+            list.Add(new LocalizationString { Name = "EditCustomFields", EN = "Edit Custom Fields", TR = "Özel alanları düzenle" });
+            list.Add(new LocalizationString { Name = "Save", EN = "Save", TR = "Kaydet" });
+            list.Add(new LocalizationString { Name = "NewCustomer", EN = "New Customer", TR = "Yeni Müşteri" });
+
+            list.Add(new LocalizationString { Name = "FailMsg", EN = "Failed, check fields and try again", TR = "Lütfen girdiğiniz değerleri kontrol edip tekrar deneyiniz" });
+
+
 
             _repository.AddBulk(list);
         }
