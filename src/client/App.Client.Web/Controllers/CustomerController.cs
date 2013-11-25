@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using System.ServiceModel.Channels;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using App.Client.Web.Models;
 using App.Client.Web.Services;
 using App.Domain.Contracts;
+using App.Utils;
 
 namespace App.Client.Web.Controllers
 {
@@ -39,14 +39,30 @@ namespace App.Client.Web.Controllers
             var customFields = await _companyService.GetAllCustomFields(CurrentUser.CompanyId);
             model.CustomFields = customFields;
 
-            model.Language = CurrentUser.Language;
+            SetLanguage(model);
 
             return View(model);
+        }
+
+        private void SetLanguage(CustomerCreateModel model)
+        {
+            var langCookie = Request.Cookies["__Lang"];
+            if (langCookie != null)
+            {
+                var lang = langCookie.Value;
+                model.Language = lang == ConstHelper.tr ? ConstHelper.tr : ConstHelper.en;
+            }
+            else
+            {
+                model.Language = CurrentUser.Language;
+            }
         }
 
         [HttpPost, ValidateAntiForgeryToken]
         public ActionResult New(CustomerCreateModel model)
         {
+            SetLanguage(model);
+
             if (!model.IsValid(model))
             {
                 model.Msg = ViewBag.Txt["FailMsg"];
