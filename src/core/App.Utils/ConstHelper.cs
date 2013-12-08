@@ -12,7 +12,9 @@ namespace App.Utils
 
         public const string tr = "tr";
         public const string en = "en";
-        
+
+        public const string __Lang = "__Lang";
+
         private static CultureInfo _cultureTR;
         public static CultureInfo CultureTR
         {
@@ -20,6 +22,7 @@ namespace App.Utils
         }
 
         private static CultureInfo _cultureEN;
+
         public static CultureInfo CultureEN
         {
             get { return _cultureEN ?? (_cultureEN = new CultureInfo("en-US")); }

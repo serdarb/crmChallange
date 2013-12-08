@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using App.Client.Web.Services;
 using App.Domain.Contracts;
+using App.Utils;
 
 namespace App.Client.Web.Controllers
 {
@@ -23,7 +24,7 @@ namespace App.Client.Web.Controllers
         [HttpGet, AllowAnonymous]
         public ActionResult Lang(string id)
         {
-            Response.SetCookie(new HttpCookie("__Lang", id));
+            Response.SetCookie(new HttpCookie(ConstHelper.__Lang, id));
 
             return HttpContext.Request.UrlReferrer != null ? Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri) : RedirectToHome();
         }

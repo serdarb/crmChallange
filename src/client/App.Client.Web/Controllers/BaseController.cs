@@ -44,7 +44,7 @@ namespace App.Client.Web.Controllers
 
                 ViewBag.Txt = HttpContext.Application[ConstHelper.en_txt];
 
-                var langCookie = Request.Cookies["__Lang"];
+                var langCookie = Request.Cookies[ConstHelper.__Lang];
                 if (langCookie != null)
                 {
                     var lang = langCookie.Value;
